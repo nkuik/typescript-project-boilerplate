@@ -25,5 +25,14 @@
         "enabled": true,
         "automerge": true
     },
-    "packageRules": []
+    "packageRules": [
+        {
+            "matchDepTypes": [
+                "engines"
+            ],
+            "rangeStrategy": "bump",
+            "groupName": "bump engines",
+            "automerge": false
+        }
+    ]
 }
