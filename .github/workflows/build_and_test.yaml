@@ -14,15 +14,16 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
+          node-version: "22"
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --recursive --frozen-lockfile
 
       - run: pnpm run check:ci
 
-      - run: pnpm test --prefix=./src --if-present
+      - run: pnpm --filter ./src --if-present test
 
-      - run: pnpm run build --prefix=./src --if-present
+      - run: pnpm --filter ./src --if-present run build
         env:
           CI: true
