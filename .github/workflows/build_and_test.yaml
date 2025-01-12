@@ -6,10 +6,16 @@ jobs:
   BuildAndTest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-      - run: npm ci --no-audit
-      - run: npm run lint --if-present
-      - run: npm test
-      - run: npm run build --if-present
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+
+      - run: pnpm run check:ci
+
+      - run: pnpm test --prefix=./src --if-present
+
+      - run: pnpm run build --prefix=./src --if-present
         env:
           CI: true
