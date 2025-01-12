@@ -1,37 +1,21 @@
 {
   "name": "typescript-project-boilerplate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Boilerplate TS project",
   "engines": {
-    "node": "18"
+    "node": "22"
   },
   "devDependencies": {
-    "@types/jest": "29.5.14",
-    "@types/node": "22.10.5",
-    "@typescript-eslint/eslint-plugin": "5.62.0",
-    "@typescript-eslint/parser": "5.62.0",
-    "eslint": "8.57.1",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-jest": "27.9.0",
-    "jest": "29.7.0",
-    "prettier": "3.4.2",
-    "ts-jest": "29.2.5",
-    "tsutils": "3.21.0",
-    "typescript": "5.7.3"
+    "@biomejs/biome": "1.9.4",
+    "@total-typescript/tsconfig": "1.0.4"
   },
   "scripts": {
-    "start": "node build/src/main.js",
-    "clean": "rimraf coverage build tmp",
-    "prebuild": "npm run lint",
-    "build": "tsc -p tsconfig.json",
-    "build:watch": "tsc -w -p tsconfig.json",
-    "build:release": "npm run clean && tsc -p tsconfig.release.json",
-    "lint": "eslint . --ext .ts --ext .mts",
-    "test": "jest --coverage --runInBand",
-    "prettier": "prettier --config .prettierrc --write .",
-    "test:watch": "jest --watch"
+    "format": "pnpm -r exec biome format --write .",
+    "biome:fix": "pnpm -r exec biome check --write .",
+    "biome:fix-unsafe": "pnpm -r exec biome check --write --unsafe .",
+    "check:ci": "pnpm -r exec biome ci .",
+    "check:types": "pnpm -r exec tsc --noEmit",
+    "check": "pnpm run '/check:.*/'"
   },
-  "dependencies": {
-    "tslib": "2.8.1"
-  }
+  "packageManager": "pnpm@10.0.0+sha512.b8fef5494bd3fe4cbd4edabd0745df2ee5be3e4b0b8b08fa643aa3e4c6702ccc0f00d68fa8a8c9858a735a0032485a44990ed2810526c875e416f001b17df12b"
 }
