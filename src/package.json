@@ -10,7 +10,7 @@
     "watch": "tsc -w"
   },
   "devDependencies": {
-    "@types/node": "22.13.11",
+    "@types/node": "22.13.12",
     "esbuild": "0.25.1",
     "tsutils": "3.21.0",
     "typescript": "5.8.2",
