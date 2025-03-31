@@ -14,7 +14,7 @@
     "esbuild": "0.25.2",
     "tsutils": "3.21.0",
     "typescript": "5.8.2",
-    "vite": "6.2.3",
+    "vite": "6.2.4",
     "vitest": "3.0.9"
   }
 }
