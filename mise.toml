@@ -1,0 +1,6 @@
+[settings]
+experimental = true
+
+[tools]
+pnpm = "latest"
+node = "22"

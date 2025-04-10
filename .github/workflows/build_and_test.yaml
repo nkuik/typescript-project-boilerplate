@@ -1,29 +1,44 @@
 name: Build and Test
 
-on: [push]
+on:
+  push:
+    branches: [main] # Trigger on pushes to main
+  pull_request:
+    branches: [main] # Trigger on PRs targeting main
 
 jobs:
   BuildAndTest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Enable Corepack
-        run: npm i -g corepack@latest && corepack enable
-        shell: bash
+      - name: Setup mise
+        uses: jdx/mise-action@v2
+        # It will automatically install tools defined in .mise.toml
 
-      - uses: actions/setup-node@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: "22"
-          cache: "pnpm"
+          version: 10.8.0 # Match .mise.toml
+
+      - name: Setup Node.js (managed by mise)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.mise.toml' # Use version from mise config
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --recursive --frozen-lockfile
+        # Use mise exec to ensure the correct pnpm version is used
+        run: mise exec -- pnpm install --frozen-lockfile
 
-      - run: pnpm run check:ci
+      - name: Run Checks (Lint, Format, Types)
+        run: mise exec -- pnpm run check
 
-      - run: pnpm --filter ./src --if-present test
+      - name: Run Tests
+        run: mise exec -- pnpm test
 
-      - run: pnpm --filter ./src --if-present run build
+      - name: Run Build
+        run: mise exec -- pnpm run build
         env:
-          CI: true
+          CI: true # Some libraries check for CI environment
