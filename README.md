@@ -20,6 +20,7 @@ A minimal, modern boilerplate for starting new TypeScript projects. Includes ess
 ```bash
     brew install mise
     mise activate
+    mise install
     corepack enable
 ```
 
