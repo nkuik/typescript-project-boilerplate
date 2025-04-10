@@ -5,7 +5,7 @@ A minimal, modern boilerplate for starting new TypeScript projects. Includes ess
 ## Features
 
 - **TypeScript**: Configured for modern Node.js environments.
-- **PNPM Workspaces**: Ready for monorepo setups.
+- **pnpm Workspaces**: Ready for monorepo setups.
 - **Biome**: Integrated for fast formatting and linting.
 - **Vitest**: Set up for unit testing.
 - **Renovate**: Configured for automatic dependency updates via GitHub Actions.
@@ -14,8 +14,8 @@ A minimal, modern boilerplate for starting new TypeScript projects. Includes ess
 
 ## Getting Started
 
-1.  **Use this template**: Click the "Use this template" button on GitHub or clone the repository.
-2.  **Install dependencies**:
+1. **Use this template**: Click the "Use this template" button on GitHub or clone the repository.
+2. **Install dependencies**:
 
 ```bash
     brew install mise
@@ -24,9 +24,9 @@ A minimal, modern boilerplate for starting new TypeScript projects. Includes ess
     corepack enable
 ```
 
-3.  **Update `package.json`**: Change the `name`, `description`, `author`, and other relevant fields for your new project.
-4.  **Start coding**: Write your code in the `src` directory. The entry point is `src/index.ts`.
-5.  **Run tests**:
+3. **Update `package.json`**: Change the `name`, `description`, `author`, and other relevant fields for your new project.
+4. **Start coding**: Write your code in the `src` directory. The entry point is `src/index.ts`.
+5. **Run tests**:
 
 ```bash
     pnpm test
@@ -42,6 +42,7 @@ A minimal, modern boilerplate for starting new TypeScript projects. Includes ess
 - `pnpm check`: Runs all `check:*` scripts.
 - `pnpm build`: Compiles TypeScript code (add build configuration if needed).
 - `pnpm test`: Runs tests using Vitest.
+
 ## Contributing
 
 Pull requests are welcome. Please open an issue first to discuss what you would like to change.
