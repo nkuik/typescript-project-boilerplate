@@ -18,12 +18,7 @@
     "servers": {
       "fetch": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp/fetch"
-        ]
+        "args": ["run", "-i", "--rm", "mcp/fetch"]
       },
       "github": {
         "command": "docker",
@@ -38,7 +33,7 @@
         "env": {
           "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github-personal-access-token}"
         }
-      },
+      }
     }
   }
 }

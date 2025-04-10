@@ -7,11 +7,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist", "LICENSE", "README.md"],
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -27,12 +23,15 @@
     "check": "pnpm run '/check:.*/'",
     "clean": "rm -rf dist",
     "build": "pnpm clean && tsc",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint": "biome check",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@total-typescript/tsconfig": "1.0.4",
     "@types/node": "22.14.0",
+    "husky": "9.1.7",
     "typescript": "5.8.3",
     "vitest": "3.1.1"
   }

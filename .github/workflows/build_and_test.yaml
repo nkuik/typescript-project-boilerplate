@@ -13,32 +13,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup mise
-        uses: jdx/mise-action@v2
-        # It will automatically install tools defined in .mise.toml
+      - name: Enable Corepack
+        run: npm i -g corepack@latest && corepack enable
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - uses: jdx/mise-action@v2
         with:
-          version: 10.8.0 # Match .mise.toml
-
-      - name: Setup Node.js (managed by mise)
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.mise.toml' # Use version from mise config
-          cache: 'pnpm'
+          install: true # [default: true] run `mise install`
+          cache: true # [default: true] cache mise using GitHub's cache
+          experimental: true # [default: false] enable experimental features
 
       - name: Install dependencies
-        # Use mise exec to ensure the correct pnpm version is used
-        run: mise exec -- pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Run Checks (Lint, Format, Types)
-        run: mise exec -- pnpm run check
+        run: pnpm run check:ci
 
       - name: Run Tests
-        run: mise exec -- pnpm test
+        run: pnpm test
+        env:
+          VITEST_VERBOSE: 1
 
       - name: Run Build
-        run: mise exec -- pnpm run build
+        run: pnpm run build
         env:
           CI: true # Some libraries check for CI environment

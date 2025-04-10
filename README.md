@@ -41,3 +41,6 @@ A minimal, modern boilerplate for starting new TypeScript projects. Includes ess
 - `pnpm check`: Runs all `check:*` scripts.
 - `pnpm build`: Compiles TypeScript code (add build configuration if needed).
 - `pnpm test`: Runs tests using Vitest.
+## Contributing
+
+Pull requests are welcome. Please open an issue first to discuss what you would like to change.

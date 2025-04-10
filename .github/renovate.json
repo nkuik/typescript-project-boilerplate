@@ -29,6 +29,10 @@
       "rangeStrategy": "bump",
       "groupName": "bump engines",
       "automerge": false
+    },
+    {
+      "matchPackageNames": ["typescript"],
+      "enabled": false
     }
   ]
 }
