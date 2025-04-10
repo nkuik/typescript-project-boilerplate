@@ -3,4 +3,4 @@ experimental = true
 
 [tools]
 pnpm = "latest"
-node = "22"
+node = "22.14.0"
