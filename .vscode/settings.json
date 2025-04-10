@@ -4,5 +4,36 @@
     "source.organizeImports.biome": "always",
     "quickfix.biome": "always"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "chat.mcp.enabled": true,
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "github-personal-access-token",
+        "description": "GitHub Personal Access Token",
+        "password": true
+      }
+    ],
+    "servers": {
+      "fetch": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/fetch"]
+      },
+      "github": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "GITHUB_PERSONAL_ACCESS_TOKEN",
+          "mcp/github"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github-personal-access-token}"
+        }
+      }
+    }
+  }
 }

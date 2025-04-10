@@ -1,4 +1,33 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.services.json"
+  "extends": "@total-typescript/tsconfig/tsc/no-dom/app",
+  "compilerOptions": {
+    /* Base Options: */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    /* Module settings for transpiling to ESM */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext", // Explicitly set module resolution
+    "outDir": "dist",
+    "sourceMap": true, // Generate source maps for debugging
+    "declaration": true, // Generate .d.ts files for library consumers
+    "declarationMap": true, // Generate source maps for .d.ts files
+    "lib": ["es2022"], // Default for ES2022 target, uncomment if needed
+    /* More advanced options */
+    "verbatimModuleSyntax": true, // Recommended for ecosystem compatibility
+    "forceConsistentCasingInFileNames": true, // Recommended for cross-platform compatibility
+    "noPropertyAccessFromIndexSignature": true
+  },
+  "include": ["src/**/*.ts"], // Compile files in src
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts"] // Exclude tests from build output
 }

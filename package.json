@@ -1,21 +1,38 @@
 {
-  "name": "typescript-project-boilerplate",
+  "name": "your-project-name",
   "version": "0.0.1",
-  "description": "Boilerplate TS project",
-  "engines": {
-    "node": "22.14.0"
+  "description": "Description of your project",
+  "author": "Nathan Kuik me@nathankuik.com ",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": ["dist", "LICENSE", "README.md"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
-  "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971",
   "scripts": {
-    "format": "pnpm -r exec biome format --write .",
-    "biome:fix": "pnpm -r exec biome check --write .",
-    "biome:fix-unsafe": "pnpm -r exec biome check --write --unsafe .",
-    "check:ci": "pnpm -r exec biome ci .",
-    "check:types": "pnpm -r exec tsc --noEmit",
-    "check": "pnpm run '/check:.*/'"
+    "format": "biome format --write .",
+    "biome:fix": "biome check --write .",
+    "biome:fix-unsafe": "biome check --write --unsafe .",
+    "check:ci": "biome ci .",
+    "check:types": "tsc --noEmit",
+    "check": "pnpm run '/check:.*/'",
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsc",
+    "test": "vitest run",
+    "lint": "biome check",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@total-typescript/tsconfig": "1.0.4"
+    "@total-typescript/tsconfig": "1.0.4",
+    "@types/node": "22.14.0",
+    "husky": "9.1.7",
+    "typescript": "5.8.3",
+    "vitest": "3.1.1"
   }
 }

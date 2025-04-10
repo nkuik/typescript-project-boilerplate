@@ -1,7 +1,7 @@
 {
   "name": "src",
   "version": "0.0.1",
-  "description": "Boilerplate TS project",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "check:types": "pnpm -r exec tsc --noEmit",

@@ -1,29 +1,39 @@
 name: Build and Test
 
-on: [push]
+on:
+  push:
+    branches: [main] # Trigger on pushes to main
+  pull_request:
+    branches: [main] # Trigger on PRs targeting main
 
 jobs:
   BuildAndTest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Enable Corepack
         run: npm i -g corepack@latest && corepack enable
-        shell: bash
 
-      - uses: actions/setup-node@v4
+      - uses: jdx/mise-action@v2
         with:
-          node-version: "22"
-          cache: "pnpm"
+          install: true # [default: true] run `mise install`
+          cache: true # [default: true] cache mise using GitHub's cache
+          experimental: true # [default: false] enable experimental features
 
       - name: Install dependencies
-        run: pnpm install --recursive --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
-      - run: pnpm run check:ci
+      - name: Run Checks (Lint, Format, Types)
+        run: pnpm run check:ci
 
-      - run: pnpm --filter ./src --if-present test
-
-      - run: pnpm --filter ./src --if-present run build
+      - name: Run Tests
+        run: pnpm test
         env:
-          CI: true
+          VITEST_VERBOSE: 1
+
+      - name: Run Build
+        run: pnpm run build
+        env:
+          CI: true # Some libraries check for CI environment
