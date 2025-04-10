@@ -2,6 +2,6 @@
 experimental = true
 
 [tools]
-biome = "latest"
-pnpm = "latest"
+"npm:@biomejs/biome" = "latest"
 node = "22.14.0"
+pnpm = "latest"
