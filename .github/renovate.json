@@ -3,6 +3,7 @@
   "addLabels": ["Renovate 🤖"],
   "automergeType": "pr",
   "automergeStrategy": "squash",
+  "configMigration": true,
   "dependencyDashboard": false,
   "draftPR": false,
   "lockFileMaintenance": {
